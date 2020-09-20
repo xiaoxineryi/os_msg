@@ -32,11 +32,12 @@ public class MySystem {
             MyThread myThread = pickThread();
             if (myThread != null){
                 synchronized (myThread){
+                    System.out.println("CPU调度选取"+myThread.getPid()+"并且唤醒");
                     myThread.notify();
                 }
                 CPU.P();
             }
-            //
+
         }
     }
 
@@ -54,7 +55,7 @@ public class MySystem {
     }
 
     public static void receive(MyThread receiver) {
-        if (true){
+        if (false){
             putUrgent(receiver);
             try {
                 //没有完整信息的情况
