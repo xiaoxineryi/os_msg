@@ -24,9 +24,10 @@ public class BufferPool {
         return msgBlockList.removeFirst();
     }
 
-    public synchronized void put(MsgBlock msgBlock){
-        free_total.V();
+    public synchronized void release(MsgBlock msgBlock){
+        msgBlock.release();
         msgBlockList.add(msgBlock);
+        free_total.V();
     }
 
 }

@@ -1,14 +1,21 @@
 package com.kaito.Block;
 
 public class MsgBlock {
-    int pid;
-    int msg_total;
-    int msg_number;
-    int size;
+    Integer pid;
+    Integer msg_total;
+    Integer msg_number;
+    Integer size;
     byte[] msg;
 
     public MsgBlock(){
         //新建的时候相当于是新建缓冲块，后面添加其他内容相当于是提取
+        msg = new byte[512];
+    }
+    public void release() {
+        pid = null;
+        msg_total = null;
+        msg_number = null;
+        size = null;
         msg = new byte[512];
     }
 
@@ -51,4 +58,5 @@ public class MsgBlock {
     public byte[] getMsg() {
         return msg;
     }
+
 }

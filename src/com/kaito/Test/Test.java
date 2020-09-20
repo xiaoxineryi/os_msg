@@ -5,6 +5,12 @@ import java.io.PrintStream;
 public class Test {
     public static void main(String[] args) {
         new ASystem().start();
+        new BSystem().start();
+    }
+}
+class BSystem extends Thread{
+    @Override
+    public void run() {
         ASystem.p();
     }
 }
@@ -26,12 +32,7 @@ class ASystem extends Thread{
         }
     }
 
-    public synchronized static  void p(){
-        try {
-            sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public synchronized static void p(){
         System.out.println(2);
     }
 }

@@ -15,24 +15,39 @@ public  class MyThread implements Sender,Receiver{
         msgList = new LinkedList<>();
     }
 
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
 
     public void send(byte[] msg, int r_id){
         try {
             MySystem.putWait(this);
-            this.wait();
+            synchronized (this){
+                System.out.println(this.pid+"发送进程进入等待队列");
+                this.wait();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println(this.pid+"发送进程继续执行");
         MySystem.send(this,msg,r_id);
     }
 
     public void receive(){
         MySystem.putWait(this);
         try {
-            this.wait();
+            synchronized (this){
+                System.out.println(this.pid+"接收进程进入等待队列");
+                this.wait();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println(this.pid+"接收进程继续执行");
         MySystem.receive(this);
     }
 
