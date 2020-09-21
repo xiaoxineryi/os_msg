@@ -7,6 +7,8 @@ import com.kaito.Character.Sender;
 public class SystemUtil {
     private static Integer temp_num = 0;
     public static synchronized MyThread createMyThread(){
-        return new MyThread(++temp_num);
+        MyThread myThread= new MyThread(++temp_num);
+        MySystem.addMap(temp_num,myThread);
+        return myThread;
     }
 }

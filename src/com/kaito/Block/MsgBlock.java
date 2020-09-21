@@ -19,6 +19,17 @@ public class MsgBlock {
         msg = new byte[512];
     }
 
+    public void set(int pid,int msg_total,int msg_number,int size){
+        this.pid = pid;
+        this.msg_total = msg_total;
+        this.msg_number = msg_number;
+        this.size = size;
+    }
+
+    public void copyMsg(byte[] msg,int st,int size){
+        System.arraycopy(msg,st,this.msg,0,size);
+    }
+
     public void setPid(int pid) {
         this.pid = pid;
     }
