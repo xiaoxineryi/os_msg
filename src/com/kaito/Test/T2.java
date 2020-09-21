@@ -26,13 +26,13 @@ class SenderThread2 extends Thread{
     public void run() {
         Reader reader = null;
         try {
-//            reader = new FileReader("src/A.txt");
-//            BufferedReader bufferedReader = new BufferedReader(reader);
-//            String ss = bufferedReader.readLine();
-//            byte[]  m =ss.getBytes();
+            reader = new FileReader("src/A.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            String ss = bufferedReader.readLine();
+            byte[]  m =ss.getBytes();
             MyThread myThread = SystemUtil.createMyThread();
-//            myThread.send(m,2);
-            myThread.send("123".getBytes(),2);
+            myThread.send(m,2);
+//            myThread.send("123".getBytes(),2);
             System.out.println(myThread.getPid()+"开始执行发送");
 
         } catch (Exception e) {
