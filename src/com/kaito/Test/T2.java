@@ -8,9 +8,10 @@ public class T2 {
     public static void main(String[] args) throws InterruptedException {
         SenderThread2 sender = new SenderThread2();
         sender.start();
-        Thread.sleep(500);
+        Thread.sleep(200);
         ReceiverThread2 receivers = new ReceiverThread2();
         receivers.start();
+
 
         MySystem.dispatch();
     }
@@ -40,5 +41,6 @@ class ReceiverThread2 extends Thread{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        myThread.receive();
     }
 }

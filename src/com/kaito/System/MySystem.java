@@ -92,10 +92,9 @@ public class MySystem {
         int s_id = 0;
         // -1表示都没有满足的，就放入紧急等待队列
         while ((s_id = getEnoughMsg(receiver_map)) == -1){
+            //没有完整信息的情况  放入紧急等待队列 让CPU执行
             putUrgent(receiver);
             try {
-
-                //没有完整信息的情况
                 CPU.V();
                 synchronized (receiver) {
                     receiver.wait();
@@ -103,7 +102,6 @@ public class MySystem {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            CPU.V();
         }
 
         //如果凑齐了的话
@@ -128,6 +126,9 @@ public class MySystem {
 
     private static boolean judge(List<MsgBlock> msgList){
         // 判断有没有满的
+        if(msgList.isEmpty()){
+            return false;
+        }
         return true;
     }
 
