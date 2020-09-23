@@ -62,6 +62,7 @@ public class MySystem {
                     System.out.println("CPU调度选取"+myThread.getPid()+"并且唤醒");
                     myThread.notify();
                 }
+
                 CPU.P();
             }
         }
