@@ -73,4 +73,5 @@ public  class MyThread implements Sender,Receiver{
         System.out.println(this.getPid()+"接收进程执行完成");
     }
 
+
 }
